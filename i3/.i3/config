@@ -1,0 +1,548 @@
+# i3 config file (by leofa)
+# vim: fdm=marker:noai:ts=4:sw=4
+#
+# please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# Mod key {{{
+
+set $mod  Mod4
+set $mod1 Mod1
+set $mod2 shift
+set $mod3 control
+
+# }}}
+
+# Font {{{
+
+font pango: "Hack Nerd Font" 9
+
+# }}}
+
+# I3bar + Colors {{{
+
+# colors from X
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+
+# set custom black colors
+set $black       #282a2e
+set $darkblack   #1d1f21
+set $transparent #00000099
+set $brightwhite #f9f9f9
+
+# add special colors
+set $brightslate #526b77
+set $slate #455a64
+set $darkslate #37474f
+
+
+bar {
+     output HDMI-A-0
+     status_command i3blocks
+     i3bar_command i3bar -t
+     position top
+     height 24
+     font pango:FontAwesome 9
+     #separator_symbol "|"
+     workspace_buttons yes
+     strip_workspace_numbers yes
+     bindsym button2 exec i3-msg kill
+     bindsym button4 nop
+     bindsym button5 nop
+     output primary
+     tray_output primary
+     tray_padding 4
+     colors {
+         # <bar>
+         separator           #586e75
+         background          #282a2e
+         statusline          #c5c8c6
+
+         # <workclass>       <border> <bg>     <text>
+         focused_workspace   #586e75  #4e6269  #ffffff
+         inactive_workspace  #455057  #3b444a  #c7c7c7
+         active_workspace    #282a2e  #373F45  #ffffff
+         urgent_workspace    #282a2e  #943b3a  #ffffff
+         binding_mode        #943b3a  #943b3a  #ffffff
+     }
+     #colors {
+         ## <bar>
+         #separator           $darkwhite
+         #background          $transparent
+         #statusline          $white
+
+         ## <workclass>       <border>      <bg>     <text>
+         #focused_workspace   $transparent $brightslate $brightwhite
+         #inactive_workspace  $transparent $slate       $white
+         #active_workspace    $darkblack   $darkwhite   $brightwhite
+         #urgent_workspace    $darkblack   $darkred     $brightwhite
+         #binding_mode        $darkblack   $darkmagenta $brightwhite
+     #}
+}
+
+# <clientclass>          <border> <bg>     <text>   <indicator>
+client.focused           #282a2e  #4e6269  #f9f9f9  #64dfff
+client.focused_inactive  #282a2e  #3b444a  #c7c7c7  #205360
+client.unfocused         #282a2e  #373F45  #c7c7c7  #354347
+client.urgent            #282a2e  #ae4544  #f9f9f9  #ae4544
+
+#client.focused          $darkblack $brightslate  $brightwhite   $white $darkblue
+#client.unfocused        $black     $slate     $white       $darkwhite $slate
+#client.focused_inactive $black     $darkslate $white       $black     $darkslate
+#client.urgent           $darkblack $darkred   $brightwhite $darkred   $darkred
+#client.background $black
+
+# }}}
+
+# Workspaces {{{
+
+# i3 swag  ┐('～`)┌
+#set $WL0 0<span font='Hack 10' font_weight='bold'>i3wm</span>
+#set $WL0 0<span font='10' weight='light' underline='low'>3</span>
+set $WL0 0<span font_weight='bold' >┐('～`)┌</span>
+
+# names / variables
+set $WS1 1 1: 
+set $WS2 2 2: 
+set $WS3 3 3: 
+set $WS4 4 4: 
+set $WS5 5 5: 
+set $WS6 6 6: 
+set $WS7 7 7: 
+set $WS8 8 8: 
+set $WS9 9 9: 
+set $WS0 10 10: 
+
+
+# }}}
+
+# Fixed workspace layout {{{
+
+for_window [class="^.*"] border pixel 2
+hide_edge_borders both
+
+for_window [workspace="$WS2|$WS4"] layout tabbed
+# }}}
+
+# Window title format {{{
+
+for_window [class="(?i)"] title_format "<span font='Source Han Sans TC 9' weight='bold' >%title</span>"
+
+# }}}
+
+# Gaps {{{
+
+#smart_gaps on
+gaps outer 10
+gaps inner 14
+
+# }}}
+
+# Borders {{{
+
+bindsym $mod+Shift+t border toggle
+smart_borders on
+#new_window pixel 1
+new_window normal 0
+new_float pixel 1
+
+# }}}
+
+# Focus windows {{{
+
+no_focus [window_role="pop-up"]
+focus_on_window_activation focus
+for_window [class="(?i)"] focus
+
+# }}}
+
+# Floating windows {{{
+
+# window rules
+for_window [window_role="task_dialog|bubble|page-info|Preferences"] floating enable
+for_window [title="Steam - Update*|Event Tester|glxgears|Taakbeheer -*"] floating enable
+for_window [instance="gvim|yad|wifi-menu"] floating enable
+for_window [class="mpv|feh|xfontsel|xfd|arandr|transmission-gtk|xpad|galculator|engrampa|eom|guvcview|mirage"] floating enable
+for_window [class="gpicview|simplescreenrecorder|zenity|info|gsimplecal|deluge|(?i)gcr-viewer"] floating enable
+for_window [instance="lxappearance|pavucontrol"] floating enable
+
+# modifier
+floating_modifier $mod
+
+# window sizes
+floating_minimum_size -1 x -1
+#floating_maximum_size 1340 x 742
+#floating_maximum_size 1920 x 1080
+floating_maximum_size -1 x -1
+
+# }}}
+
+# Resize and position windows {{{
+
+for_window [class="(?i)Gpicview|mirage"]  move position center
+for_window [class="info|(?i)gsimplecal|yadinfo|(?i)pavucontrol|(?i)insync"] move position pointer, move down 21 px
+#for_window [instance="radio"]  resize set 355 445; move position pointer, move down 21 px
+#for_window [instance="wifi-menu"]  resize set 425 425; move position pointer, move down 21 px
+
+# }}}
+
+# Scratchpad {{{
+
+bindsym $mod+Shift+plus move scratchpad
+bindsym $mod+plus scratchpad show
+
+# }}}
+
+# Sticky windows {{{
+
+bindsym $mod+Shift+s sticky toggle
+for_window [class="info|Mate-color-select|gcolor2|timesup|QtPass|GtkFileChooserDialog"] sticky enable
+for_window [instance="file_progress"]  sticky enable
+
+# }}}
+
+# Window control {{{
+
+for_window [instance="scratch_termite"] move scratchpad, move position 2000 150, move scratchpad, scratchpad show
+for_window [instance="transmission"] floating enable, resize set 824 496, move position pointer, move down 21 px
+
+# }}}
+
+# Picture in picture mode {{{
+bindsym $mod+y fullscreen disable, floating enable, resize set 422 240, sticky enable, move position 925 510
+
+# }}}
+
+# Move windows to workspaces {{{
+
+for_window [instance="(?i)Spotify"] move to workspace $WS6
+assign [instance="(?i)Spotify"] $WS6
+assign [class="Slack"] $WS9
+
+assign [instance="urxvt|ws1_termite"] $WS1
+assign [instance="ptt"] $WS5
+assign [instance="(?i)Code"] $WS4
+assign [instance="Messenger\ for\ Desktop"] $WS9
+assign [window_role="browser"] $WS2
+assign [instance="file_properties|property_browser|caja|thunar|pcmanfm"] $WS3
+assign [instance="libreoffice*|abiword|gucharmap|mutt|geary|xournal"] $WS4
+assign [instance="atom|geany|ws5_termite"] $WS4
+assign [instance="cmus_termite"] $WS6
+assign [instance="cheese|guvcview|(?i)pinta|gimp|inkscape|krita|simple-scan|gthumb"] $WS7
+#assign [class="(?i)Steam"] 7 
+#assign [instance="sol|frogatto|sun-awt-X11-XFramePeer|net-minecraft-bootstrap-Bootstrap|supertuxkart|gnome-chess"] $WS8
+#assign [instance="remmina|htop|(?i)gnome-boxes|virt-manager|log_term|glances_term|htop_term|pacaur|gparted|gnome-disks|gitg|seahorse"] $WS0
+assign [instance="telegram"] $WS9
+assign [class="xfreerdp"] $WS7
+assign [class="Wine"] $WS8
+for_window [instance="Wine"] fullscreen disable, floating disable
+
+# }}}
+
+# Focus urgent {{{
+
+bindsym $mod+u [urgent=latest] focus
+force_display_urgency_hint 500 ms
+
+# }}}
+
+# Bar modus {{{
+bindsym $mod+Shift+h exec toggle-bar
+#script to toggle bar invisible/dock
+
+# }}}
+
+# Cycle through active workspaces {{{
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev
+workspace_auto_back_and_forth yes
+
+# }}}
+
+# Brightness control {{{
+# xbacklight doesn't work with modesetting use brightness script
+#bindsym --release XF86MonBrightnessUp    exec sudo brightness up
+#bindsym --release XF86MonBrightnessDown  exec sudo brightness down
+#bindsym $mod+XF86MonBrightnessUp         exec sudo brightness max
+#bindsym $mod+XF86MonBrightnessDown       exec sudo brightness min
+
+bindsym --release XF86MonBrightnessUp    exec xbacklight -inc 5
+bindsym --release XF86MonBrightnessDown  exec xbacklight -dec 5
+bindsym $mod+XF86MonBrightnessUp         exec xbacklight -set 100
+bindsym $mod+XF86MonBrightnessDown       exec xbacklight -set 0
+
+#bindsym $mod+Shift+XF86MonBrightnessDown exec toggle-dpms
+#bindsym $mod+Shift+XF86MonBrightnessUp   exec toggle-red
+
+# }}}
+
+# KeyBoardBrightness control {{{
+bindsym --release XF86KbdBrightnessUp    exec kbdlight up 10
+bindsym --release XF86KbdBrightnessDown  exec kbdlight down 10
+bindsym $mod+XF86KbdBrightnessUp         exec kbdlight max
+bindsym $mod+XF86KbdBrightnessDown       exec kbdlight off
+
+# }}}
+
+# Sound control {{{
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute        exec amixer -q set Master mute && pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+XF86AudioMute   exec pavucontrol
+
+# }}}
+
+# Mediaplayer control {{{
+
+#bindsym $mod1+Right exec cmus-remote -n || playerctl next
+#bindsym $mod1+Left  exec cmus-remote -p || playerctl previous
+#bindsym $mod1+Up    exec cmus-remote -s || playerctl stop
+#bindsym $mod1+Down  exec cmus-remote -u || playerctl play-pause
+bindsym XF86AudioNext                   exec playerctl next
+bindsym XF86AudioPrev                   exec playerctl previous
+bindsym XF86AudioPlay                   exec playerctl play-pause
+bindsym $mod1+Right                     exec playerctl next
+bindsym $mod1+Left                      exec playerctl previous
+bindsym $mod1+Up                        exec playerctl stop
+bindsym $mod1+Down                      exec playerctl play-pause
+
+#bindsym $mod+XF86AudioLowerVolume       exec termite --title "C* Music Player" --name "cmus_termite" -e cmus
+#bindsym $mod+XF86AudioRaiseVolume       exec termite --title "Radio" --name "radio" -e "sh -c 'radio'"
+#bindsym $mod+Shift+XF86AudioRaiseVolume exec qutebrowser --backend webengine https://play.google.com/music
+
+# }}}
+
+# Take screenshots {{{
+bindsym Print exec dscrot
+bindsym $mod+Print exec wscrot
+bindsym --release $mod+Shift+Print exec sscrot
+
+# }}}
+
+# Kill focused window {{{
+bindsym $mod+q kill
+bindsym --release $mod+x exec xkill
+
+# }}}
+
+# Mouse support  {{{
+focus_follows_mouse no
+bindsym --whole-window $mod1+button2 kill
+bindsym --whole-window $mod1+button3 floating toggle
+
+# }}}
+
+# Change focus {{{
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# }}}
+
+# Move focused window {{{
+bindsym $mod+Shift+j move left 25px
+bindsym $mod+Shift+k move down 25px
+bindsym $mod+Shift+l move up 25px
+bindsym $mod+Shift+semicolon move right 25px
+
+bindsym $mod+Shift+Left move left 25px
+bindsym $mod+Shift+Down move down 25px
+bindsym $mod+Shift+Up move up 25px
+bindsym $mod+Shift+Right move right 25px
+
+# }}}
+
+# Container split orientation {{{
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# }}}
+
+# Fullscreen mode {{{
+bindsym $mod+F11 fullscreen
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen global
+popup_during_fullscreen smart
+
+# }}}
+
+# Change container layout (stacked, tabbed, toggle split) {{{
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# }}}
+
+# Toggle tiling / floating {{{
+bindsym $mod+Shift+space floating toggle
+
+# }}}
+
+# Focus {{{
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+Shift+period focus parent
+
+# Focus the child container
+bindsym $mod+Shift+comma focus child
+
+# }}}
+
+# Switch to workspace {{{
+bindsym $mod+grave workspace $WL0
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# }}}
+
+# Move focused container to workspace {{{
+bindsym $mod+Shift+grave move container to workspace $WL0
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS0
+
+# }}}
+
+# Multimonitor support {{{
+workspace "$WL0" output HDMI-0
+workspace "$WS1" output HDMI-0
+workspace "$WS2" output HDMI-0
+workspace "$WS3" output HDMI-0
+workspace "$WS4" output HDMI-0
+workspace "$WS5" output VGA-0
+workspace "$WS6" output VGA-0
+workspace "$WS7" output HDMI-0
+workspace "$WS8" output HDMI-0
+workspace "$WS9" output VGA-0
+workspace "$WS0" output HDMI-0
+
+# }}}
+
+# Resize window {{{
+bindsym $mod+r mode "  "
+mode "  " {
+     bindsym j resize shrink width 10 px or 10 ppt
+     bindsym k resize grow height 10 px or 10 ppt
+     bindsym l resize shrink height 10 px or 10 ppt
+     bindsym semicolon resize grow width 10 px or 10 ppt
+     bindsym Left resize shrink width 10 px or 10 ppt
+     bindsym Down resize grow height 10 px or 10 ppt
+     bindsym Up resize shrink height 10 px or 10 ppt
+     bindsym Right resize grow width 10 px or 10 ppt
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
+}
+
+# }}}
+
+# Keyboard bindings {{{
+
+# terminal
+bindsym $mod+Return exec termite --name 'ws1_termite'
+bindsym $mod+Shift+backslash exec termite --name 'ws5_termite'
+#bindsym $mod+Return exec urxvt -name 'ws1_termite'
+#bindsym $mod+backslash exec termite --config=/home/ssuyi/.config/termite/ptt.conf --name 'ptt'
+bindsym $mod+backslash exec st
+
+# search files/ websearch
+bindsym $mod1+space exec rofi-find
+bindsym $mod+slash exec rofi-s
+
+# webbrowser
+bindsym $mod+Shift+slash exec rofi-ssb
+bindsym $mod+c exec google-chrome-stable
+bindsym $mod+n exec qutebrowser
+bindsym $mod+Shift+n exec qutebrowser ~/docs/bookmarks_18-03-16.html
+bindsym $mod+i exec google-chrome-stable --incognito
+
+# filemanager
+bindsym $mod+b exec pcmanfm ~/
+bindsym $mod+Shift+b exec rofi-fb
+
+# mail
+bindsym $mod+m exec soc #script to start rtv turses & mutt
+#termite --title "Mutt E-Mail Client" --name "mutt" -e "mutt"
+bindsym $mod+Shift+m exec google-chome-stable https://mail.google.com
+
+# text-editor
+bindsym $mod+g exec gvim -geom=120x42+200+23
+
+# launcher
+#bindsym $mod+d exec rofi-fullscreen-apps
+bindsym $mod+d exec rofi -show run -fullscreen -opacity 90 -padding 300
+bindsym $mod+Shift+a exec rofi-gksu
+bindsym $mod+a exec rofi -show run
+
+# manage windows
+bindsym $mod+Tab exec rofi -width 45 -show window
+bindsym $mod1+Tab exec rofi-getwindow
+bindsym $mod+Shift+Return exec termite --name "scratch_termite"
+
+# rofi connection manager
+bindsym $mod+XF86Reload exec rofi-connm
+bindsym $mod+Shift+XF86Reload exec notify-send '  :: restarting wifi.. ::' && sudo systemctl restart netctl-auto@wlp1s0.service
+
+# password manager
+bindsym $mod+p exec rofi-passmenu --notify
+bindsym $mod+Shift+p exec qtpass
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace
+bindsym $mod+Shift+r restart
+
+# exit i3
+bindsym $mod+Shift+e exec rofi-exit
+
+# lockscreen
+bindsym $mod+Shift+Escape exec i3lock-fancy-dualmonitor -f DejaVu-Sans
+
+# logout dialog
+bindsym XF86PowerOff exec rofi-logout
+
+# quick suspend
+bindsym $mod+XF86PowerOff exec systemctl suspend
+
+# }}}
+
+# Autostart applications {{{
+
+exec i3-msg workspace 1 "1: " #fix workspace 1 name not applied at login (race condition?)
+
+# }}}

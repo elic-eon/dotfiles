@@ -1,0 +1,314 @@
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  call plug#begin('~/.local/share/nvim/plugged')
+else
+  call plug#begin('~/.vim/plugged')
+endif
+
+" basic plugin -------------------------------------------------------------{{{
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+" --------------------------------------------------------------------------}}}
+" develop plugin -----------------------------------------------------------{{{
+Plug 'Valloric/YouCompleteMe'
+
+Plug 'w0rp/ale'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+" --------------------------------------------------------------------------}}}
+" appearence plugin --------------------------------------------------------{{{
+Plug 'itchyny/lightline.vim'
+"Plug 'mhinz/vim-janah'
+"Plug 'ajmwagar/vim-deus'
+Plug 'elic-eon/gruvbox'
+"Plug 'Yggdroot/indentLine'
+" --------------------------------------------------------------------------}}}
+" misc plugin --------------------------------------------------------------{{{
+Plug 'mhinz/vim-startify'
+Plug 'ap/vim-css-color'
+Plug 'cespare/vim-toml'
+" Plug 'xolox/vim-misc'
+Plug 'milkypostman/vim-togglelist'
+Plug 'junegunn/vim-easy-align'
+" --------------------------------------------------------------------------}}}
+
+call plug#end()
+
+" color scheme -------------------------------------------------------------{{{
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+
+set background=dark
+
+silent! colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_folded = 'bg0'
+let g:gruvbox_fold_column = 'bg0'
+set termguicolors
+
+function ToggleBackground()
+  if g:gruvbox_contrast_dark == 'hard'
+    let g:gruvbox_contrast_dark = 'mac'
+  elseif g:gruvbox_contrast_dark == 'mac'
+    let g:gruvbox_contrast_dark = 'hard'
+  endif
+  colorscheme gruvbox
+endfunction
+
+" switch color
+nnoremap <silent> <leader>sc :call ToggleBackground()<CR>
+
+" --------------------------------------------------------------------------}}}
+" basic setting ------------------------------------------------------------{{{
+set verbosefile=/tmp/verbose.log
+set encoding=utf-8
+set number
+set novisualbell
+set errorbells
+set textwidth=80
+set colorcolumn=80
+set nowrap
+"set noruler
+set wrapscan
+"set scrolloff=1
+set showcmd
+set noshowmode
+
+" split
+set splitbelow
+set splitright
+
+" tab setting
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+" complete option
+set complete=k,.,w,b,u,U,i,d,t
+set completeopt=menu,longest
+
+"set wildmenu
+set wildmode=longest:full
+set wildoptions=tagfile
+set wildignorecase
+
+set spelllang=en_us
+
+set nobackup
+set noswapfile
+
+set synmaxcol=0
+syntax on
+
+" fold setting
+set foldenable
+set foldcolumn=1
+set foldlevel=2
+set foldminlines=3
+set foldnestmax=10 foldlevelstart=99
+
+" list char
+set nolist
+set fillchars+=diff:⣿
+set fillchars+=vert:│
+set fillchars+=fold:-
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·
+set listchars+=eol:¬
+set list
+nmap <leader>l :set list!<CR>
+set showbreak=↪
+
+" --------------------------------------------------------------------------}}}
+" plugin specfic setting ---------------------------------------------------{{{
+
+" lightline setting
+set laststatus=2
+set showtabline=1
+set nocursorline
+"set nocursorcolumn
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': {'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+" Tagbar
+let g:tagbar_left=1
+let g:tagbar_autofocus=1
+let g:tagbar_autoclose=0
+
+" toggle list
+let g:toggle_list_no_mappings=1
+nmap <script> <silent> <leader>x :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+
+" EasyAlign
+xmap ga <Plug>(EasyAlign)
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
+
+" ale
+let g:ale_linters = {
+      \   'cpp': ['clang-check'],
+      \}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_cpp_clangcheck_options = '-extra-arg=--std=c++1z'
+
+" IndentLines
+let g:indentLine_enabled = 0
+
+" nerdcommenter
+let g:NERDDefaultAlign = 'left'
+
+" --------------------------------------------------------------------------}}}
+" key mapping --------------------------------------------------------------{{{
+nnoremap <F2> :NERDTreeToggle<cr>
+nmap <F3> :TagbarToggle<CR>
+set pastetoggle=<F4>
+
+" Toggle the state of search highlighting locally.
+nnoremap <silent> <cr> :setlocal hlsearch!<cr>
+
+" Toggle the state of spelling locally.  nnoremap <silent> <leader>sp :setlocal spell!<cr>
+" Cold turkey; no more arrows mojions.
+nnoremap <silent> <up>    <nop>
+nnoremap <silent> <down>  <nop>
+nnoremap <silent> <left>  <nop>
+nnoremap <silent> <right> <nop>
+
+" Strip trailing whitespace from the end of files.
+nnoremap <silent> <leader>sw :%s/\s\+$//g<cr>
+
+" identation
+nmap <TAB> v>
+nmap <S-TAB> v<
+vmap <TAB> >gv
+vmap <S-TAB> <gv
+
+" indentLines
+nnoremap <Leader>i :IndentLinesToggle<CR>
+
+" nerdcommenter shortcut
+map <Leader><Leader> <Leader>c<space>
+
+" YCM shortcut
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Move cursor by display lines when wrapping
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+" folding keymap
+" close when open, and open when close
+nnoremap <Space> za
+vnoremap <Space> za
+" Open all fold
+nnoremap <leader>A zR
+" Close all fold
+nnoremap <leader>C zM
+
+" Insert Mode Completion
+inoremap <c-f> <c-x><c-f>
+inoremap <c-]> <c-x><c-]>
+inoremap <c-l> <c-x><c-l>
+
+" replace Ctrl-P with fzf
+nnoremap <c-p> :Files<CR>
+
+" --------------------------------------------------------------------------}}}
+" Autocmd ------------------------------------------------------------------{{{
+"
+"" Resize splits when the window is resized
+autocmd VimResized * :wincmd =
+
+" C
+augroup ft_c
+  autocmd!
+  autocmd FileType c setlocal foldmethod=syntax
+  autocmd FileType c setlocal cinoptions=l1,g0,(0
+  "autocmd FileType c IndentLinesEnable
+augroup END
+
+" CPP
+augroup ft_cpp
+  autocmd!
+  autocmd FileType cpp setlocal foldmethod=syntax
+  autocmd FileType cpp setlocal cinoptions=l1,g0,(0
+  "autocmd FileType cpp IndentLinesEnable
+augroup END
+
+" JSON
+augroup ft_json
+  autocmd!
+  autocmd FileType json setlocal foldmethod=syntax
+augroup END
+
+" Python
+augroup ft_python
+  autocmd!
+  autocmd FileType python setlocal foldmethod=indent
+  autocmd FileType python setlocal softtabstop=4
+  autocmd FileType python setlocal shiftwidth=4
+  autocmd FileType python setlocal tabstop=4
+augroup END
+
+" vim
+augroup ft_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" markdown
+augroup ft_markdown
+  autocmd!
+  autocmd FileType markdown setlocal wrap
+  autocmd FileType markdown setlocal textwidth=0
+  autocmd FileType markdown setlocal colorcolumn=0
+augroup END
+
+" Go
+augroup ft_go
+  autocmd!
+  autocmd FileType go setlocal foldmethod=syntax
+  autocmd FileType go IndentLinesEnable
+  autocmd FileType go setlocal softtabstop=4
+  autocmd FileType go setlocal shiftwidth=4
+  autocmd FileType go setlocal tabstop=4
+  autocmd FileType go setlocal noexpandtab
+augroup END
+
+
+" --------------------------------------------------------------------------}}}
+
+" vim:set ft=vim sw=2 ts=2:
