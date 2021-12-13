@@ -35,6 +35,6 @@ zplug "Peltoche/lsd", from:gh-r, as:command, rename-to:"lsd"
 zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:"rg"
 zplug "sharkdp/fd", from:gh-r, as:command, rename-to:"fd"
 
-zplug "zdharma/fast-syntax-highlighting", defer:3
+zplug "zdharma-continuum/fast-syntax-highlighting", defer:3
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-autosuggestions", defer:3

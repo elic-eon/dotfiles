@@ -15,10 +15,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 " --------------------------------------------------------------------------}}}
-" develop plugin -----------------------------------------------------------{{{
-Plug 'Valloric/YouCompleteMe'
 
-Plug 'w0rp/ale'
+" develop plugin -----------------------------------------------------------{{{
+"Plug 'Valloric/YouCompleteMe'
+
+"Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 " --------------------------------------------------------------------------}}}
@@ -33,7 +34,7 @@ Plug 'elic-eon/gruvbox'
 Plug 'mhinz/vim-startify'
 Plug 'ap/vim-css-color'
 Plug 'cespare/vim-toml'
-" Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-misc'
 Plug 'milkypostman/vim-togglelist'
 Plug 'junegunn/vim-easy-align'
 " --------------------------------------------------------------------------}}}
