@@ -1,8 +1,9 @@
 # open terminal
-alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
+# alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~ &> /dev/null
+alt - return : /Applications/Wezterm.app/COntents/MacOS/wezterm &> /dev/null
 
 # reload yabai
-shift + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+shift + alt - r : launchctl kickstart -k "gui/${UID}/com.koekeishiya.yabai"
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -150,7 +151,7 @@ alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # toggle sticky (show on all spaces)
-alt - s : yabai -m window --toggle sticky
+# alt - s : yabai -m window --toggle sticky
 
 # toggle topmost (keep above other windows)
 alt - o : yabai -m window --toggle topmost
@@ -163,3 +164,7 @@ alt - p : yabai -m window --toggle sticky;\
 # change layout of desktop
 ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
+
+cmd + alt - s : yabai -m window --toggle spotify || open  -a Spotify
+# cmd + alt - d : yabai -m window --toggle discord || open -a Discord
+# cmd + alt - t : yabai -m window --toggle transmission || open -a Transmission

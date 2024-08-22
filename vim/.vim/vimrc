@@ -67,7 +67,7 @@ nnoremap <silent> <leader>sc :call ToggleBackground()<CR>
 
 " --------------------------------------------------------------------------}}}
 " basic setting ------------------------------------------------------------{{{
-set verbosefile=/tmp/verbose.log
+" set verbosefile=/tmp/verbose.log
 set encoding=utf-8
 set number
 set novisualbell
@@ -80,6 +80,7 @@ set wrapscan
 "set scrolloff=1
 set showcmd
 set noshowmode
+set maxmempattern=65536
 
 " split
 set splitbelow
@@ -106,6 +107,7 @@ set nobackup
 set noswapfile
 
 set synmaxcol=0
+set redrawtime=10000
 syntax on
 
 " fold setting

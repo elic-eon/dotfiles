@@ -17,7 +17,7 @@ zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
-#zplug "plugins/aws", from:oh-my-zsh
+zplug "plugins/aws", from:oh-my-zsh
 zplug "rupa/z", use:"z.sh"
 #zplug "mafredri/zsh-async"
 #zplug "sindresorhus/pure", use:"pure.zsh", as:theme
