@@ -112,3 +112,5 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)

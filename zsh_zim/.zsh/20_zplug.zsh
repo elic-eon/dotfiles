@@ -123,8 +123,7 @@ zplug "dandavison/delta", from:gh-r, as:command, rename-to:"delta"
 zplug "lsd-rs/lsd", from:gh-r, as:command, rename-to:"lsd"
 zplug "BurntSushi/ripgrep", from:gh-r, as:command, rename-to:"rg"
 zplug "sharkdp/fd", from:gh-r, as:command, rename-to:"fd"
-
-# zplug "starship/starship", as:command, from:gh-r, rename-to:"starship"
+zplug "starship/starship", as:command, from:gh-r, rename-to:"starship"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -134,4 +133,5 @@ if ! zplug check --verbose; then
     echo
 fi
 
-# zplug load
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
