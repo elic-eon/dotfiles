@@ -52,6 +52,9 @@ zmodule utility
 # OMZ git aliases
 zmodule ohmyzsh/ohmyzsh --root plugins/git
 
+# kubectl ailases
+zmodule ohmyzsh/ohmyzsh --root plugins/kubectl
+
 zmodule rupa/z --source "z.sh"
 
 zmodule joke/zim-starship
