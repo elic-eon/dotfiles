@@ -19,15 +19,20 @@ zmodule termtitle
 # Completion
 #
 
+# Must load zplug before ~/.zsh
+zmodule zplug/zplug
+
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
 
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after all modules that add completion definitions.
-zmodule completion
 
-# Must load zplug before ~/.zsh
-zmodule zplug/zplug
+zmodule ohmyzsh/ohmyzsh --source lib/completion.zsh
+zmodule ohmyzsh/ohmyzsh --root plugins/docker
+zmodule ohmyzsh/ohmyzsh --root plugins/docker-compose
+
+zmodule completion
 
 # Source ~/.zsh/*.zsh
 zmodule ${HOME}/.zsh --cmd 'for file in {}/*.zsh; do source "$file"; done'
