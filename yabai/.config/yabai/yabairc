@@ -30,11 +30,15 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  6
-yabai -m config bottom_padding               6
-yabai -m config left_padding                 6
-yabai -m config right_padding                6
-yabai -m config window_gap                   6
+
+# padding = bar padding + border width / 2
+yabai -m config top_padding                  9
+yabai -m config bottom_padding               9
+yabai -m config left_padding                 9
+yabai -m config right_padding                9
+
+# gap = bar padding + border width
+yabai -m config window_gap                   12
 
 # mission-control desktop labels
 yabai -m space 1 --label term
