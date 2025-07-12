@@ -48,49 +48,92 @@ set $slate #455a64
 set $darkslate #37474f
 
 
-bar {
-     output HDMI-A-0
-     status_command i3blocks
-     i3bar_command i3bar -t
-     position top
-     height 24
-     font pango:FontAwesome 9
-     #separator_symbol "|"
-     workspace_buttons yes
-     strip_workspace_numbers yes
-     bindsym button2 exec i3-msg kill
-     bindsym button4 nop
-     bindsym button5 nop
-     output primary
-     tray_output primary
-     tray_padding 4
-     colors {
-         # <bar>
-         separator           #586e75
-         background          #282a2e
-         statusline          #c5c8c6
-
-         # <workclass>       <border> <bg>     <text>
-         focused_workspace   #586e75  #4e6269  #ffffff
-         inactive_workspace  #455057  #3b444a  #c7c7c7
-         active_workspace    #282a2e  #373F45  #ffffff
-         urgent_workspace    #282a2e  #943b3a  #ffffff
-         binding_mode        #943b3a  #943b3a  #ffffff
-     }
-     #colors {
-         ## <bar>
-         #separator           $darkwhite
-         #background          $transparent
-         #statusline          $white
-
-         ## <workclass>       <border>      <bg>     <text>
-         #focused_workspace   $transparent $brightslate $brightwhite
-         #inactive_workspace  $transparent $slate       $white
-         #active_workspace    $darkblack   $darkwhite   $brightwhite
-         #urgent_workspace    $darkblack   $darkred     $brightwhite
-         #binding_mode        $darkblack   $darkmagenta $brightwhite
-     #}
-}
+# bar {
+#      output HDMI-0
+#      status_command i3blocks
+#      i3bar_command i3bar -t
+#      position top
+#      height 24
+#      font pango:FontAwesome 8
+#      #separator_symbol "|"
+#      workspace_buttons yes
+#      strip_workspace_numbers yes
+#      bindsym button2 exec i3-msg kill
+#      bindsym button4 nop
+#      bindsym button5 nop
+#      output primary
+#      tray_output HDMI-0
+#      tray_padding 4
+#      colors {
+#          # <bar>
+#          separator           #586e75
+#          background          #282a2e
+#          statusline          #c5c8c6
+# 
+#          # <workclass>       <border> <bg>     <text>
+#          focused_workspace   #586e75  #4e6269  #ffffff
+#          inactive_workspace  #455057  #3b444a  #c7c7c7
+#          active_workspace    #282a2e  #373F45  #ffffff
+#          urgent_workspace    #282a2e  #943b3a  #ffffff
+#          binding_mode        #943b3a  #943b3a  #ffffff
+#      }
+#      #colors {
+#          ## <bar>
+#          #separator           $darkwhite
+#          #background          $transparent
+#          #statusline          $white
+# 
+#          ## <workclass>       <border>      <bg>     <text>
+#          #focused_workspace   $transparent $brightslate $brightwhite
+#          #inactive_workspace  $transparent $slate       $white
+#          #active_workspace    $darkblack   $darkwhite   $brightwhite
+#          #urgent_workspace    $darkblack   $darkred     $brightwhite
+#          #binding_mode        $darkblack   $darkmagenta $brightwhite
+#      #}
+# }
+# 
+# bar {
+#      output DP-0
+#      status_command i3blocks
+#      i3bar_command i3bar -t
+#      position top
+#      height 24
+#      font pango:FontAwesome 6
+#      #separator_symbol "|"
+#      workspace_buttons yes
+#      strip_workspace_numbers yes
+#      bindsym button2 exec i3-msg kill
+#      bindsym button4 nop
+#      bindsym button5 nop
+#      tray_output HDMI-A-0
+#      tray_padding 4
+#      colors {
+#          # <bar>
+#          separator           #586e75
+#          background          #282a2e
+#          statusline          #c5c8c6
+# 
+#          # <workclass>       <border> <bg>     <text>
+#          focused_workspace   #586e75  #4e6269  #ffffff
+#          inactive_workspace  #455057  #3b444a  #c7c7c7
+#          active_workspace    #282a2e  #373F45  #ffffff
+#          urgent_workspace    #282a2e  #943b3a  #ffffff
+#          binding_mode        #943b3a  #943b3a  #ffffff
+#      }
+#      #colors {
+#          ## <bar>
+#          #separator           $darkwhite
+#          #background          $transparent
+#          #statusline          $white
+# 
+#          ## <workclass>       <border>      <bg>     <text>
+#          #focused_workspace   $transparent $brightslate $brightwhite
+#          #inactive_workspace  $transparent $slate       $white
+#          #active_workspace    $darkblack   $darkwhite   $brightwhite
+#          #urgent_workspace    $darkblack   $darkred     $brightwhite
+#          #binding_mode        $darkblack   $darkmagenta $brightwhite
+#      #}
+# }
 
 # <clientclass>          <border> <bg>     <text>   <indicator>
 client.focused           #282a2e  #4e6269  #f9f9f9  #64dfff
@@ -116,8 +159,8 @@ set $WL0 0<span font_weight='bold' >┐('～`)┌</span>
 # names / variables
 set $WS1 1 1: 
 set $WS2 2 2: 
-set $WS3 3 3: 
-set $WS4 4 4: 
+set $WS3 3 3: 
+set $WS4 4 4: 
 set $WS5 5 5: 
 set $WS6 6 6: 
 set $WS7 7 7: 
@@ -133,7 +176,7 @@ set $WS0 10 10: 
 for_window [class="^.*"] border pixel 2
 hide_edge_borders both
 
-for_window [workspace="$WS2|$WS4"] layout tabbed
+for_window [workspace="$WS3"] layout tabbed
 # }}}
 
 # Window title format {{{
@@ -145,8 +188,8 @@ for_window [class="(?i)"] title_format "<span font='Source Han Sans TC 9' weight
 # Gaps {{{
 
 #smart_gaps on
-gaps outer 10
-gaps inner 14
+gaps outer 6
+gaps inner 6
 
 # }}}
 
@@ -215,7 +258,7 @@ for_window [instance="file_progress"]  sticky enable
 
 # Window control {{{
 
-for_window [instance="scratch_termite"] move scratchpad, move position 2000 150, move scratchpad, scratchpad show
+for_window [instance="scratch_kitty"] move scratchpad, move position 2000 150, move scratchpad, scratchpad show
 for_window [instance="transmission"] floating enable, resize set 824 496, move position pointer, move down 21 px
 
 # }}}
@@ -233,15 +276,15 @@ assign [class="Slack"] $WS9
 
 assign [instance="urxvt|ws1_termite"] $WS1
 assign [instance="ptt"] $WS5
-assign [instance="(?i)Code"] $WS4
+assign [instance="(?i)Code"] $WS3
 assign [instance="Messenger\ for\ Desktop"] $WS9
 assign [window_role="browser"] $WS2
-assign [instance="file_properties|property_browser|caja|thunar|pcmanfm"] $WS3
-assign [instance="libreoffice*|abiword|gucharmap|mutt|geary|xournal"] $WS4
+assign [instance="file_properties|property_browser|caja|thunar|pcmanfm"] $WS4
+assign [instance="libreoffice*|abiword|gucharmap|mutt|geary|xournal"] $WS3
 assign [instance="atom|geany|ws5_termite"] $WS4
 assign [instance="cmus_termite"] $WS6
 assign [instance="cheese|guvcview|(?i)pinta|gimp|inkscape|krita|simple-scan|gthumb"] $WS7
-#assign [class="(?i)Steam"] 7 
+assign [class="(?i)Steam"] 7 
 #assign [instance="sol|frogatto|sun-awt-X11-XFramePeer|net-minecraft-bootstrap-Bootstrap|supertuxkart|gnome-chess"] $WS8
 #assign [instance="remmina|htop|(?i)gnome-boxes|virt-manager|log_term|glances_term|htop_term|pacaur|gparted|gnome-disks|gitg|seahorse"] $WS0
 assign [instance="telegram"] $WS9
@@ -439,17 +482,17 @@ bindsym $mod+Shift+0 move container to workspace $WS0
 # }}}
 
 # Multimonitor support {{{
-workspace "$WL0" output HDMI-0
-workspace "$WS1" output HDMI-0
-workspace "$WS2" output HDMI-0
-workspace "$WS3" output HDMI-0
-workspace "$WS4" output HDMI-0
-workspace "$WS5" output VGA-0
-workspace "$WS6" output VGA-0
-workspace "$WS7" output HDMI-0
-workspace "$WS8" output HDMI-0
-workspace "$WS9" output VGA-0
-workspace "$WS0" output HDMI-0
+workspace "$WL0" output DP-0
+workspace "$WS1" output DP-0
+workspace "$WS2" output DP-0
+workspace "$WS3" output DP-0
+workspace "$WS4" output DP-0
+workspace "$WS5" output HDMI-0
+workspace "$WS6" output HDMI-0
+workspace "$WS7" output DP-0
+workspace "$WS8" output DP-0
+workspace "$WS9" output HDMI-0
+workspace "$WS0" output DP-0
 
 # }}}
 
@@ -473,9 +516,8 @@ mode "  " {
 # Keyboard bindings {{{
 
 # terminal
-bindsym $mod+Return exec termite --name 'ws1_termite'
-bindsym $mod+Shift+backslash exec termite --name 'ws5_termite'
-#bindsym $mod+Return exec urxvt -name 'ws1_termite'
+bindsym $mod+Return exec kitty --name 'ws1_kitty' -o font_size=11
+bindsym $mod+Shift+backslash exec kitty --name 'ws5_kitty' -o font_size=11
 #bindsym $mod+backslash exec termite --config=/home/ssuyi/.config/termite/ptt.conf --name 'ptt'
 bindsym $mod+backslash exec st
 
@@ -511,7 +553,7 @@ bindsym $mod+a exec rofi -show run
 # manage windows
 bindsym $mod+Tab exec rofi -width 45 -show window
 bindsym $mod1+Tab exec rofi-getwindow
-bindsym $mod+Shift+Return exec termite --name "scratch_termite"
+bindsym $mod+Shift+Return exec kitty --name "scratch_kitty"
 
 # rofi connection manager
 bindsym $mod+XF86Reload exec rofi-connm
@@ -544,5 +586,6 @@ bindsym $mod+XF86PowerOff exec systemctl suspend
 # Autostart applications {{{
 
 exec i3-msg workspace 1 "1: " #fix workspace 1 name not applied at login (race condition?)
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # }}}
