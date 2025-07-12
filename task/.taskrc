@@ -1,0 +1,62 @@
+# Location of your task data (optional, default is ~/.task)
+data.location=~/etc/task
+
+# Default project for new tasks (optional)
+# default.project=inbox
+
+# Date format
+dateformat=m/d/Y
+
+# Color theme
+color=on
+color.tag.someday=yellow
+color.tag.waiting=magenta
+color.project.inbox=cyan
+
+# Urgency coefficients (optional, tweak as you like)
+urgency.user.project.inbox.coefficient=1.0
+urgency.user.tag.someday.coefficient=-1.0
+urgency.user.tag.waiting.coefficient=-1.0
+
+# Custom GTD reports
+
+# Processing inbox tasks:
+# - Set priority (priority:H/M/L)
+# - Assign to a project (project:name)
+# - Add due date if needed (due:date)
+# - Add tags as needed (tags:tag1,tag2)
+# - Remove from inbox by changing project
+# Examples:
+# task 1 modify priority:H project:work due:tomorrow
+# task 2 modify project:personal +next
+report.inbox.description=Inbox
+report.inbox.columns=id,description,project,tags,entry
+report.inbox.labels=ID,Description,Project,Tags,Added
+report.inbox.filter=project:inbox or project: or project:Inbox
+
+report.next.description=Next Actions
+report.next.columns=id,description,project,tags,priority,status,due
+report.next.labels=ID,Description,Project,Tags,Priority,Status,Due
+report.next.filter=status:pending priority:H -waiting -someday
+
+report.waiting.description=Waiting For
+report.waiting.columns=id,description,project,tags,entry
+report.waiting.labels=ID,Description,Project,Tags,Added
+report.waiting.filter=+waiting
+
+report.someday.description=Someday/Maybe
+report.someday.columns=id,description,project,tags,entry
+report.someday.labels=ID,Description,Project,Tags,Added
+report.someday.filter=+someday
+
+# Default report (what you see when you type `task`)
+default.command=next
+
+# Confirmation prompts (optional)
+confirmation=off
+
+# Editor for editing tasks (optional)
+# editor=vim
+
+# End of file
+news.version=3.4.1
