@@ -3,7 +3,10 @@ local config = {}
 -- local config = wezterm.config_builder()
 
 
-config.font = wezterm.font 'Hack Nerd Font'
+config.font = wezterm.font_with_fallback {
+  'Hack Nerd Font',
+  'SF Pro',
+}
 config.font_size = 14
 
 config.enable_tab_bar = true
