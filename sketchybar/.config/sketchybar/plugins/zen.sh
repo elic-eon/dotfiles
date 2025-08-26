@@ -21,6 +21,7 @@ zen_off() {
              --set separator drawing=on \
              --set front_app drawing=on \
              --set volume_icon drawing=on \
+             --set spotify.anchor drawing=on \
              --set spotify.play updates=on \
              --set brew drawing=on \
              --set volume drawing=on \

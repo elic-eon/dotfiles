@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# set -x
+
 update() {
   source "$CONFIG_DIR/colors.sh"
   source "$CONFIG_DIR/icons.sh"
 
   NOTIFICATIONS="$(gh api notifications)"
   COUNT="$(echo "$NOTIFICATIONS" | jq 'length')"
+
   args=()
   if [ "$NOTIFICATIONS" = "[]" ]; then
     args+=(--set $NAME icon=$BELL label="0")
@@ -23,7 +26,7 @@ update() {
   COLOR=$BLUE
   args+=(--set github.bell icon.color=$COLOR)
 
-  while read -r repo url type title 
+  while read -r repo url type title
   do
     COUNTER=$((COUNTER + 1))
     IMPORTANT="$(echo "$title" | egrep -i "(deprecat|break|broke)")"
@@ -33,7 +36,8 @@ update() {
     if [ "${repo}" = "" ] && [ "${title}" = "" ]; then
       repo="Note"
       title="No new notifications"
-    fi 
+    fi
+
     case "${type}" in
       "'Issue'") COLOR=$GREEN; ICON=$GIT_ISSUE; URL="$(gh api "$(echo "${url}" | sed -e "s/^'//" -e "s/'$//")" | jq .html_url)"
       ;;
@@ -44,13 +48,13 @@ update() {
       "'Commit'") COLOR=$WHITE; ICON=$GIT_COMMIT; URL="$(gh api "$(echo "${url}" | sed -e "s/^'//" -e "s/'$//")" | jq .html_url)"
       ;;
     esac
-    
+
     if [ "$IMPORTANT" != "" ]; then
       COLOR=$RED
       ICON=􀁞
       args+=(--set github.bell icon.color=$COLOR)
     fi
-    
+
     notification=(
       label="$(echo "$title" | sed -e "s/^'//" -e "s/'$//")"
       icon="$ICON $(echo "$repo" | sed -e "s/^'//" -e "s/'$//"):"
@@ -65,7 +69,7 @@ update() {
 
     args+=(--clone github.notification.$COUNTER github.template \
            --set github.notification.$COUNTER "${notification[@]}")
-  done <<< "$(echo "$NOTIFICATIONS" | jq -r '.[] | [.repository.name, .subject.latest_comment_url, .subject.type, .subject.title] | @sh')"
+  done <<< "$(echo "$NOTIFICATIONS" | jq -r '.[] | [.repository.name, .subject.url, .subject.type, .subject.title] | @sh')"
 
   sketchybar -m "${args[@]}" > /dev/null
 

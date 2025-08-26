@@ -7,6 +7,7 @@ ITEM_DIR="$CONFIG_DIR/items" # Directory where the items are configured
 PLUGIN_DIR="$CONFIG_DIR/plugins" # Directory where all the plugin scripts are stored
 
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+# FONT="Hack Nerd Font"
 PADDINGS=3 # All paddings use this value (icon, label, background)
 
 # Unload the macOS on screen indicator overlay for volume change
@@ -61,38 +62,38 @@ defaults=(
 
 sketchybar --default "${defaults[@]}"
 
-sketchybar --add item seperator.cl center                 \
-           --set      seperator.cl padding_left=0         \
-                                   padding_right=0        \
-          #                         icon=· \
-                                   icon.font="$FONT:Heavy:12.0" \
-                                   icon.padding_left=800 \
-                                   icon.padding_right=6 \
-                                   background.color=$BAR_COLOR \
-                                   background.height=28 \
-                                   background.corner_radius=9 \
-                                   icon.drawing=on       \
-                                   label.drawing=off
-
-sketchybar --add item seperator.cc center                 \
-           --set      seperator.cc padding_left=96        \
-                                   padding_right=96        \
-                                   background.drawing=off \
-                                   icon.drawing=off       \
-                                   label.drawing=off
-
-sketchybar --add item seperator.cr center                 \
-           --set      seperator.cr padding_left=0        \
-                                   padding_right=0        \
-                                   icon.padding_left=6 \
-                                   icon.padding_right=800 \
-                                   background.color=$BAR_COLOR \
-                                   background.height=28 \
-                                   background.corner_radius=9 \
-                                   icon.font="$FONT:Heavy:12.0" \
-          #                         icon=· \
-                                   icon.drawing=on       \
-                                   label.drawing=off
+# sketchybar --add item seperator.cl center                 \
+#            --set      seperator.cl padding_left=0         \
+#                                    padding_right=0        \
+#           #                         icon=· \
+#                                    icon.font="$FONT:Heavy:12.0" \
+#                                    icon.padding_left=800 \
+#                                    icon.padding_right=6 \
+#                                    background.color=$BAR_COLOR \
+#                                    background.height=28 \
+#                                    background.corner_radius=9 \
+#                                    icon.drawing=on       \
+#                                    label.drawing=off
+#
+# sketchybar --add item seperator.cc center                 \
+#            --set      seperator.cc padding_left=96        \
+#                                    padding_right=96        \
+#                                    background.drawing=off \
+#                                    icon.drawing=off       \
+#                                    label.drawing=off
+#
+# sketchybar --add item seperator.cr center                 \
+#            --set      seperator.cr padding_left=0        \
+#                                    padding_right=0        \
+#                                    icon.padding_left=6 \
+#                                    icon.padding_right=800 \
+#                                    background.color=$BAR_COLOR \
+#                                    background.height=28 \
+#                                    background.corner_radius=9 \
+#                                    icon.font="$FONT:Heavy:12.0" \
+#           #                         icon=· \
+#                                    icon.drawing=on       \
+#                                    label.drawing=off
 
 # Left
 source "$ITEM_DIR/apple.sh"
@@ -107,6 +108,7 @@ sketchybar --add bracket left apple.logo '/space\..*/' space_creator front_app \
 
 # Center
 # source "$ITEM_DIR/spotify.sh"
+source "$ITEM_DIR/spotify_new.sh"
 # source "$ITEM_DIR/media.sh"
 
 # Right
