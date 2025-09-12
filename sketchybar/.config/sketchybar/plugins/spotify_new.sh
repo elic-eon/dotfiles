@@ -61,15 +61,6 @@ update() {
     sketchybar -m --set spotify.anchor drawing=off popup.drawing=off \
     exit 0
   fi
-  # Set play or pause icon depending on state
-  local play_icon=""
-  if [ "$SPOTIFY_DISPLAY_CONTROLS" = "true" ]; then
-    if [ "$state" = "playing" ]; then
-      play_icon="􀊆"  # pause icon
-    else
-      play_icon="􀊄"  # play icon
-    fi
-  fi
 
   local track artist album cover_url
   track=$(osascript -e 'tell application "Spotify" to get name of current track')
@@ -77,9 +68,21 @@ update() {
   album=$(osascript -e 'tell application "Spotify" to get album of current track')
   cover_url=$(osascript -e 'tell application "Spotify" to get artwork url of current track')
 
-  sketchybar -m \
-    --set spotify.anchor label="$artist - $track" \
-    --set spotify.anchor drawing=on
+  # Set play or pause icon depending on state
+  local play_icon=""
+  if [ "$SPOTIFY_DISPLAY_CONTROLS" = "true" ]; then
+    if [ "$state" = "playing" ]; then
+      play_icon="􀊆"  # pause icon
+      sketchybar -m \
+        --set spotify.anchor label="$artist - $track" \
+        --set spotify.anchor drawing=on
+    else
+      play_icon="􀊄"  # play icon
+      sketchybar -m \
+        --set spotify.anchor label="" \
+        --set spotify.anchor drawing=on
+    fi
+  fi
 
   # Download cover image with fallback
   if curl -s --max-time 5 "$cover_url" -o "$COVER_PATH"; then
@@ -96,9 +99,7 @@ update() {
   sketchybar -m \
     --set spotify.title label="$track" \
     --set spotify.artist label="$artist" \
-    --set spotify.album label="$album" \
-    --set spotify.anchor label="$artist - $track" \
-    --set spotify.anchor drawing=on
+    --set spotify.album label="$album"
 
   # Only update these if controls are enabled
   if [ "$SPOTIFY_DISPLAY_CONTROLS" = "true" ]; then
