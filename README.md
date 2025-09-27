@@ -56,6 +56,12 @@ SF symbols
 brew install --cask sf-symbols
 ```
 
+### utils
+
+```sh
+brew install fzf jq yq bat delta lsd ripgrep fd starship
+```
+
 ### wezterm
 
 ```sh

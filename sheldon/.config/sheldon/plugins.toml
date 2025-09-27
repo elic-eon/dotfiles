@@ -14,20 +14,68 @@ shell = "zsh"
 
 [plugins]
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
-
-[plugins.starship]
-github = "joke/zim-starship"
-
-[plugins.z]
-github = "rupa/z"
-use = ["z.sh"]
+[plugins.zimfw_environment]
+github = "zimfw/environment"
 
 [plugins.zimfw_input]
 github = "zimfw/input"
 
+[plugins.zimfw_completion]
+github = "zimfw/completion"
+
+# For ls alias
+[plugins.zimfw_utility]
+github = "zimfw/utility"
+
+[plugins.local]
+local = "~/.zsh"
+use = ["*.zsh"]
+
+[plugins.ohmyzsh_lib]
+github = "ohmyzsh/ohmyzsh"
+dir = "lib"
+use = ["completion.zsh"]
+
+# For docker aliases/completions
+[plugins.ohmyzsh_docker]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/docker"
+
+# For kubectl aliases
+[plugins.ohmyzsh_docker-compose]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/docker-compose"
+
+# Additional completion definitions for Zsh.
+[plugins.zsh_completions]
+github = "zsh-users/zsh-completions"
+
+# For git aliases
+[plugins.ohmyzsh_git]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/git"
+
+# For kubectl aliases
+[plugins.ohmyzsh_kubectl]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/kubectl"
+
+# prompt
+[plugins.starship]
+github = "joke/zim-starship"
+
+# jump around
+[plugins.z]
+github = "rupa/z"
+
+# Fish-like syntax highlighting for Zsh.
 [plugins.syntax]
 github = "zdharma-continuum/fast-syntax-highlighting"
+
+# Fish-like history search (up arrow) for Zsh.
+[plugins.history_search]
+github = "zsh-users/zsh-history-substring-search"
+
+# Fish-like autosuggestions for Zsh.
+[plugins.autosuggestions]
+github = "zsh-users/zsh-autosuggestions"

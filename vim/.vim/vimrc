@@ -193,7 +193,7 @@ let g:NERDDefaultAlign = 'left'
 " key mapping --------------------------------------------------------------{{{
 nnoremap <F2> :NERDTreeToggle<cr>
 nmap <F3> :TagbarToggle<CR>
-set pastetoggle=<F4>
+" set pastetoggle=<F4>
 
 " Toggle the state of search highlighting locally.
 nnoremap <silent> <cr> :setlocal hlsearch!<cr>

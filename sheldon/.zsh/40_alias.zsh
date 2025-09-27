@@ -1,0 +1,7 @@
+alias la='ls -la'
+alias ti='task inbox'
+alias tn='task next'
+alias ts='task someday'
+alias tw='task waiting'
+alias ta='task all'
+alias t='task'
