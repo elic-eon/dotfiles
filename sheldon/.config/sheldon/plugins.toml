@@ -25,24 +25,30 @@ github = "zimfw/input"
 [plugins.zimfw_utility]
 github = "zimfw/utility"
 
-[plugins.zimfw_completion]
-github = "zimfw/completion"
 # }}}
 
-# local settings
-[plugins.local]
-local = "~/.zsh"
-use = ["*.zsh"]
+# set before OMZ docker
+[plugins.zsh_cache]
+inline = 'export ZSH_CACHE_DIR="$HOME/.cache/zsh"; export FPATH="$ZSH_CACHE_DIR/completions:$FPATH"'
 
 # For docker aliases/completions
 [plugins.ohmyzsh_docker]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins/docker"
 
-# For kubectl aliases
+# For docker compose aliases
 [plugins.ohmyzsh_docker-compose]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins/docker-compose"
+
+# must after OMZ docker
+[plugins.zimfw_completion]
+github = "zimfw/completion"
+
+# local settings + fzf completion
+[plugins.local]
+local = "~/.zsh"
+use = ["*.zsh"]
 
 [plugins.ohmyzsh_lib]
 github = "ohmyzsh/ohmyzsh"
