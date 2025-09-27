@@ -1,25 +1,187 @@
 # dotfiles
 
+Some configuration I am using.
+
 ## Installation
 
-1. Stow
-
-Managing dotfiles by [GNU Stow](https://www.gnu.org/software/stow/)
-
-`brew install stow`
-
-1. Install package
+### Clone This Repo
 
 ```sh
 cd ~
 git clone git@github.com:elic-eon/dotfiles.git
-cd dotfiles
-stow zsh_zim
 ```
 
-1. Uninstall package
+
+### Install GNU Stow
+
+Managing dotfiles using [GNU Stow](https://www.gnu.org/software/stow/)
+
+`brew install stow`
+
+### Install packages
+
+For example, install `wezterm` package:
 
 ```sh
 cd ~/dotfiles
-stow -D zsh_zim
+stow wezterm
+```
+
+Soft link all files under `dotfiles/wezterm`
+
+### Uninstall packages
+
+Unlink all file in the package folders
+
+```sh
+cd ~/dotfiles
+stow -D wezterm
+```
+
+## Packages
+
+Recent setup
+
+### Fonts
+
+Hack Nerd font
+
+```sh
+brew install font-hack-nerd-font
+```
+
+SF symbols
+
+```sh
+brew install --cask sf-symbols
+```
+
+### wezterm
+
+```sh
+brew install wezterm
+```
+
+install config
+
+```sh
+stow wezterm
+```
+
+### zsh
+
+Plugin manager: [sheldon](https://github.com/rossmacarthur/sheldon)
+
+```sh
+brew install sheldon
+```
+
+Back up existing `.zshrc` if exists:
+
+```sh
+mv ~/.zshrc ~/.zshrc.backup
+```
+
+soft link dotfiles:
+
+```sh
+stow sheldon
+```
+
+### yabai
+
+install yabai
+
+```sh
+brew install yabai
+```
+
+install config
+
+```sh
+stoe yabai
+```
+
+run services
+
+```sh
+yabai --start-service
+```
+
+### skhd
+
+hotkey daemon
+
+```sh
+brew install skhd
+```
+
+install config
+
+```sh
+stow skhd
+```
+
+run service
+
+```sh
+skhd --start-services
+```
+
+### skeychybar
+
+top bar
+
+```sh
+brew install sketchybar
+```
+
+install config
+
+```sh
+stow sketchybar
+```
+
+run service
+
+```sh
+brew services start sketchybar
+```
+
+### borders
+
+[JankyBorders](https://github.com/FelixKratz/JankyBorders)
+
+```sh
+brew install borders
+```
+
+install config
+
+```sh
+stow borders
+```
+
+run the serce
+
+```sh
+brew services start borders
+```
+
+### vim
+
+the editor. Install config:
+
+```sh
+stow vim
+```
+
+Run `:PlugInstall` in vim
+
+### executables
+
+to `~/.bin`
+
+```sh
+stow bin
 ```
