@@ -2,12 +2,20 @@
 
 Some configuration I am using.
 
+TL;DR; basic zsh setup
+
+```sh
+cd $HOME && git clone https://github.com/elic-eon/dotfiles.git
+brew install stow fzf jq yq bat delta lsd ripgrep fd starship
+cd $HOME/dotfiles && stow sheldon
+```
+
 ## Installation
 
 ### Clone This Repo
 
 ```sh
-cd ~
+cd $HOME
 git clone git@github.com:elic-eon/dotfiles.git
 ```
 
