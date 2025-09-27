@@ -14,27 +14,25 @@ shell = "zsh"
 
 [plugins]
 
+# {{{ zimfw great zsh options
+
 [plugins.zimfw_environment]
 github = "zimfw/environment"
 
 [plugins.zimfw_input]
 github = "zimfw/input"
 
-[plugins.zimfw_completion]
-github = "zimfw/completion"
-
-# For ls alias
 [plugins.zimfw_utility]
 github = "zimfw/utility"
 
+[plugins.zimfw_completion]
+github = "zimfw/completion"
+# }}}
+
+# local settings
 [plugins.local]
 local = "~/.zsh"
 use = ["*.zsh"]
-
-[plugins.ohmyzsh_lib]
-github = "ohmyzsh/ohmyzsh"
-dir = "lib"
-use = ["completion.zsh"]
 
 # For docker aliases/completions
 [plugins.ohmyzsh_docker]
@@ -45,6 +43,11 @@ dir = "plugins/docker"
 [plugins.ohmyzsh_docker-compose]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins/docker-compose"
+
+[plugins.ohmyzsh_lib]
+github = "ohmyzsh/ohmyzsh"
+dir = "lib"
+use = ["completion.zsh"]
 
 # Additional completion definitions for Zsh.
 [plugins.zsh_completions]
