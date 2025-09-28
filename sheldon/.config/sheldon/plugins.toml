@@ -75,7 +75,8 @@ github = "joke/zim-starship"
 
 # jump around
 [plugins.z]
-github = "rupa/z"
+# github = "rupa/z"
+github = "agkozak/zsh-z"
 
 # Fish-like syntax highlighting for Zsh.
 [plugins.syntax]
@@ -88,3 +89,7 @@ github = "zsh-users/zsh-history-substring-search"
 # Fish-like autosuggestions for Zsh.
 [plugins.autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+
+# theme
+[plugins.base16]
+github = "chriskempson/base16-shell"
