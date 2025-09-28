@@ -71,6 +71,8 @@ yabai -m rule --add app="^qemu-system-aarch64$" manage=off
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 
+yabai -m signal --add event=space_changed action="hs -m yabaiHammerSpoon:onSpacesChanged"
+
 # borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
 
 echo "yabai configuration loaded.."
