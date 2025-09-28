@@ -43,7 +43,7 @@ export BRIGHT_ORANGE=0xfffe8019
 export MAGENTA=0xffd3869b
 export GREY=0xff665c54
 export TRANSPARENT=0x00000000
-export BG0=0xff282828
+export BG0=0xff1d2021
 export BG1=0x603c3836
 export BG2=0x60503945
 

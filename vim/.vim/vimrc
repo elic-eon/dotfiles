@@ -47,10 +47,10 @@ set t_8b=[48;2;%lu;%lu;%lum
 
 set background=dark
 
-silent! colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_folded = 'bg0'
 let g:gruvbox_fold_column = 'bg0'
+silent! colorscheme gruvbox
 set termguicolors
 
 function ToggleBackground()
