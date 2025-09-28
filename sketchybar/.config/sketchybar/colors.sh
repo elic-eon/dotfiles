@@ -30,8 +30,9 @@
 # export BG1=0x603c3e4f
 # export BG2=0x60494d64
 
-### Gruvbox Dark Hard
-export BLACK=0xff1d2021
+### Gruvbox Dark Hard (234)
+# export BLACK=0xff1d2021 (hard)
+export BLACK=0xff1c1c1c
 export WHITE=0xffd5c4a1
 export BRIGHT_WHITE=0xfffbf1c7
 export RED=0xfffb4934

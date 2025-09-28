@@ -1,0 +1,130 @@
+{
+    // Editor settings
+    "editor.fontSize": 12,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // File settings
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+
+    // Terminal settings
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.fontSize": 12,
+
+    // Vim settings
+    "vim.foldfix": true,
+    "vim.leader": "\\",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<leader>", "f"],
+          "commands": ["editor.action.formatDocument"]
+        },
+        {
+          "before": ["<leader>", "<leader>"],
+          "commands": ["editor.action.commentLine"]
+        },
+        {
+          "before": ["<leader>", "r"],
+          "commands": ["editor.action.rename"]
+        },
+        {
+          "before": ["z", "c"],
+          "commands": ["editor.fold"]
+        },
+        {
+          "before": ["z", "o"],
+          "commands": ["editor.unfold"]
+        },
+        {
+          "before": ["z", "a"],
+          "commands": ["editor.toggleFold"]
+        },
+        {
+          "before": ["z", "m"],
+          "commands": ["editor.foldAll"]
+        },
+        {
+          "before": ["z", "r"],
+          "commands": ["editor.unfoldAll"]
+        },
+        {
+          "before": ["<leader>", "p"],
+          "commands": ["workbench.action.pinEditor"]
+        },
+        {
+          "before": ["<leader>", "u"],
+          "commands": ["workbench.action.unpinEditor"]
+        },
+        {
+          "before": ["<leader>", "t"],
+          "commands": ["workbench.action.terminal.focus"]
+        }
+    ],
+
+    // Window settings
+    "window.commandCenter": true,
+    "window.zoomLevel": 1,
+
+    // Workbench settings
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "workbench.externalBrowser": "/Applications/Arc.app/Contents/MacOS/Arc",
+    "explorer.compactFolders": false,
+
+    // Debug settings
+    "debug.console.fontSize": 12,
+    "git.openRepositoryInParentFolders": "never",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cursor-retrieval.canAttemptGithubLogin": false,
+    "workbench.activityBar.orientation": "vertical",
+    "workbench.preferredHighContrastColorTheme": "Gruvbox Dark Hard",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.autofetch": true,
+    "githubPullRequests.pullBranch": "never",
+    "update.releaseTrack": "prerelease",
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "cursor.cpp.disabledLanguages": [
+      "plaintext"
+    ],
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "jest.jestCommandLine": "npx jest",
+    "gitlens.views.commitDetails.files.layout": "tree",
+    "workbench.preferredDarkColorTheme": "Gruvbox Dark Hard",
+    "workbench.colorCustomizations": {
+      "[Gruvbox Dark Hard]": {
+        "widget.shadow": "#431c1c1c",
+        "dropdown.background": "#1c1c1c",
+        "input.background": "#1c1c1c",
+        "scrollbar.shadow": "#1c1c1c",
+        "sideBar.background": "#1c1c1c",
+        "activityBar.background": "#1c1c1c",
+        "activityBarTop.background": "#1c1c1c",
+        "editorGroupHeader.noTabsBackground": "#1c1c1c",
+        "editorGroupHeader.tabsBackground": "#1c1c1c",
+        "editorHoverWidget.background": "#1c1c1c",
+        "tab.inactiveBackground": "#1c1c1c",
+        "editor.background": "#1c1c1c",
+        "editorWidget.background": "#1c1c1c",
+        "editorSuggestWidget.background": "#1c1c1c",
+        "terminal.background": "#1c1c1c",
+        "statusBar.background": "#1c1c1c",
+        "titleBar.activeBackground": "#1c1c1c",
+        "titleBar.inactiveBackground": "#1c1c1c"
+
+      }
+    }
+}
