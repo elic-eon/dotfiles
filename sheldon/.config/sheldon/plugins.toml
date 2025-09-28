@@ -92,4 +92,4 @@ github = "zsh-users/zsh-autosuggestions"
 
 # theme
 [plugins.base16]
-github = "chriskempson/base16-shell"
+github = "elic-eon/base16-shell"

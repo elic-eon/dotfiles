@@ -47,7 +47,8 @@ set t_8b=[48;2;%lu;%lu;%lum
 
 set background=dark
 
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_custom_bg = ["#1c1c1c", 234]
+let g:gruvbox_contrast_dark = 'custom'
 let g:gruvbox_folded = 'bg0'
 let g:gruvbox_fold_column = 'bg0'
 silent! colorscheme gruvbox
@@ -55,8 +56,8 @@ set termguicolors
 
 function ToggleBackground()
   if g:gruvbox_contrast_dark == 'hard'
-    let g:gruvbox_contrast_dark = 'mac'
-  elseif g:gruvbox_contrast_dark == 'mac'
+    let g:gruvbox_contrast_dark = 'cus'
+  elseif g:gruvbox_contrast_dark == 'cus'
     let g:gruvbox_contrast_dark = 'hard'
   endif
   colorscheme gruvbox
